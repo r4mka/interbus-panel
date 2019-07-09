@@ -1,0 +1,35 @@
+{
+  "extends": ["react-app", "plugin:prettier/recommended"],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "no-extra-boolean-cast": 0,
+    "no-param-reassign": ["error", { "props": false }],
+    "no-underscore-dangle": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "react/forbid-prop-types": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
+    "react/jsx-sort-default-props": 1,
+    "react/no-danger": 0,
+    "react/sort-prop-types": [1, { "requiredFirst": true }]
+  },
+  "globals": {
+    "__DEVELOPMENT__": true,
+    "__CLIENT__": true,
+    "__SERVER__": true,
+    "__DISABLE_SSR__": true,
+    "__DEVTOOLS__": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src"]
+      }
+    }
+  }
+}
