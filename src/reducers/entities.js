@@ -2,6 +2,7 @@ import { fromJS } from 'immutable';
 
 const initialState = fromJS({
   cars: {},
+  drivers: {},
 });
 
 export default (state = initialState, action) => {
