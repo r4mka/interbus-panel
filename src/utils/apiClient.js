@@ -9,9 +9,7 @@ export default getState => {
     `${apiHost}${path}${isEmpty(params) ? '' : `/?${stringify(params)}`}`;
 
   const handleResponse = res =>
-    res.ok
-      ? res.text().then(text => (isEmpty(text.length) ? {} : JSON.parse(text)))
-      : Promise.reject(res);
+    res.ok ? res.text().then(text => (text.length ? JSON.parse(text) : {})) : Promise.reject(res);
 
   const attachToken = headers => {
     const cognitoUser = getState().getIn(['auth', 'user']);
