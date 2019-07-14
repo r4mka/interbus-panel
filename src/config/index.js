@@ -1,7 +1,7 @@
-const { HOST, PORT, API_HOST } = process.env;
+const { HOST, PORT, REACT_APP_API_HOST } = process.env;
 
 export default {
   host: HOST || 'localhost',
   port: PORT,
-  apiHost: API_HOST,
+  apiHost: REACT_APP_API_HOST,
 };
