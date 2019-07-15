@@ -1,26 +1,23 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { fetchCars, fetchCar, fetchDrivers } from 'actions';
+import React from 'react';
+import { Link, Route } from 'react-router-dom';
+import { Cars, Drivers } from 'domains';
 
-function App({ handleFetchCars, handleFetchCar, handleFetchDrivers }) {
-  useEffect(() => {
-    handleFetchCars().then(() => {
-      setTimeout(() => handleFetchCar('CAR-jliPlI3y8'), 1500);
-    });
-    setTimeout(handleFetchDrivers, 3000);
-  }, []);
+const App = () => (
+  <div>
+    <nav>
+      <ul>
+        <li>
+          <Link to="/cars">Cars</Link>
+        </li>
+        <li>
+          <Link to="/drivers/">Drivers</Link>
+        </li>
+      </ul>
+    </nav>
 
-  return <div>InterBus Panel</div>;
-}
+    <Route path="/cars" component={Cars} />
+    <Route path="/drivers" component={Drivers} />
+  </div>
+);
 
-App.propTypes = {
-  handleFetchCar: PropTypes.func.isRequired,
-  handleFetchCars: PropTypes.func.isRequired,
-  handleFetchDrivers: PropTypes.func.isRequired,
-};
-
-export default connect(
-  null,
-  { handleFetchCars: fetchCars, handleFetchDrivers: fetchDrivers, handleFetchCar: fetchCar },
-)(App);
+export default App;
