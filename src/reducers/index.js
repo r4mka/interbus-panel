@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux-immutable';
+import { reducer as form } from 'redux-form/immutable';
 import cars from './carsReducer';
 import drivers from './driversReducer';
 import entities from './entitiesReducer';
@@ -16,4 +17,5 @@ export default combineReducers({
   entities,
   errors,
   loading,
+  form,
 });
