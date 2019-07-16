@@ -1,4 +1,4 @@
-import { FETCH_CARS, FETCH_CAR } from 'reducers/cars';
+import { FETCH_CARS, FETCH_CAR } from 'reducers';
 import { apiClient } from 'store';
 import { schema } from 'normalizr';
 

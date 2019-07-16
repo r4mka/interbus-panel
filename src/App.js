@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-import { Cars, Drivers } from 'domains';
+import { Link, Route, Switch } from 'react-router-dom';
+import { CarsList, DriversList, CarDetails, DriverDetails } from 'domains';
 
 const App = () => (
   <div>
@@ -15,8 +15,12 @@ const App = () => (
       </ul>
     </nav>
 
-    <Route path="/cars" component={Cars} />
-    <Route path="/drivers" component={Drivers} />
+    <Switch>
+      <Route path="/cars/:id" component={CarDetails} />
+      <Route path="/cars" component={CarsList} />
+      <Route path="/drivers/:id" component={DriverDetails} />
+      <Route path="/drivers" component={DriversList} />
+    </Switch>
   </div>
 );
 

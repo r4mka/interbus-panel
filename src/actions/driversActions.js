@@ -1,4 +1,4 @@
-import { FETCH_DRIVERS, FETCH_DRIVER } from 'reducers/drivers';
+import { FETCH_DRIVERS, FETCH_DRIVER } from 'reducers';
 import { apiClient } from 'store';
 import { schema } from 'normalizr';
 

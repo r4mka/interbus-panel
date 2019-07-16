@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchCars } from 'actions';
+import { createLoadingSelector, FETCH_CARS } from 'reducers';
 
-const Cars = () => {
-  const cars = useSelector(state => state.getIn(['cars', 'items']));
-  const $isLoading = useSelector(state => state.getIn(['cars', '$isLoading']));
+const CarsList = () => {
+  const cars = useSelector(state => state.get('cars'));
+  const isLoading = useSelector(createLoadingSelector(FETCH_CARS));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,12 +24,14 @@ const Cars = () => {
           </li>
         </ul>
       </nav>
-      {$isLoading ? (
+      {isLoading ? (
         <div>loading...</div>
       ) : (
         <ul>
           {cars.map(car => (
-            <li key={car}>{car}</li>
+            <li key={car}>
+              <Link to={`/cars/${car}`}>{car}</Link>
+            </li>
           ))}
         </ul>
       )}
@@ -36,4 +39,4 @@ const Cars = () => {
   );
 };
 
-export default Cars;
+export default CarsList;
