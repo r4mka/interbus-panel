@@ -4,6 +4,8 @@ import { Map } from 'immutable';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDriver } from 'actions';
 import { createLoadingSelector, createErrorMessageSelector, FETCH_DRIVER } from 'reducers';
+import { Form } from 'components';
+import { driverForm } from 'forms';
 
 const DriverDetails = ({
   match: {
@@ -30,6 +32,13 @@ const DriverDetails = ({
   return (
     <div>
       <h2>{`${driver.get('firstname')} ${driver.get('lastname')}`}</h2>
+      <Form
+        fields={driverForm.fields}
+        submitLabel="zapisz"
+        resetLabel="anuluj"
+        onSubmit={console.log}
+        form="DriverDetails"
+      />
     </div>
   );
 };

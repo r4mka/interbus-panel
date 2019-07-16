@@ -1,0 +1,10 @@
+fields:
+  -
+    name: firstname
+    type: text
+    placeholder: Imie
+    validate: [required]
+  -
+    name: lastname
+    type: text
+    placeholder: Nazwisko
