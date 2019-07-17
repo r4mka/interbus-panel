@@ -20,20 +20,25 @@ const DriversList = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/">Back</Link>
+            <Link to="/drivers/create">Dodaj kierowcę</Link>
+          </li>
+          <li>
+            <Link to="/">Cofnij</Link>
           </li>
         </ul>
       </nav>
       {isLoading ? (
         <div>loading...</div>
       ) : (
-        <ul>
-          {drivers.map(driver => (
-            <li key={driver}>
-              <Link to={`/drivers/${driver}`}>{driver}</Link>
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul>
+            {drivers.map(driver => (
+              <li key={driver}>
+                <Link to={`/drivers/${driver}`}>{driver}</Link>
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </div>
   );
