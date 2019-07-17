@@ -16,41 +16,35 @@ FormField.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
-const Form = ({
-  fields,
-  handleSubmit,
-  onSubmit,
-  pristine,
-  reset,
-  resetLabel,
-  submitting,
-  submitLabel,
-}) => (
-  <form onSubmit={handleSubmit(onSubmit)}>
+const Form = ({ fields, handleSubmit, pristine, reset, resetLabel, submitting, submitLabel }) => (
+  <form onSubmit={handleSubmit} style={{ display: 'inline-block' }}>
     {map(fields, ({ type, name, validate = [], ...props }) => (
-      <Field
-        name={name}
-        type={type}
-        validate={validate.map(v => validators[v]())}
-        component={FormField}
-        {...props}
-      />
+      <div key={name} style={{ margin: 8 }}>
+        <Field
+          name={name}
+          type={type}
+          validate={validate.map(v => validators[v]())}
+          component={FormField}
+          {...props}
+        />
+      </div>
     ))}
-    {resetLabel && (
-      <button type="button" onClick={reset} disabled={pristine}>
-        {resetLabel}
+    <div style={{ margin: 8, textAlign: 'right' }}>
+      {resetLabel && (
+        <button type="button" onClick={reset} disabled={pristine} style={{ marginRight: 8 }}>
+          {resetLabel}
+        </button>
+      )}
+      <button type="submit" disabled={submitting || pristine}>
+        {submitLabel}
       </button>
-    )}
-    <button type="submit" disabled={submitting || pristine}>
-      {submitLabel}
-    </button>
+    </div>
   </form>
 );
 
 Form.propTypes = {
   fields: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,

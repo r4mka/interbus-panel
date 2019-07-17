@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { PropTypes } from 'utils';
 import { Map } from 'immutable';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchDriver } from 'actions';
+import { fetchDriver, updateDriver } from 'actions';
 import { createLoadingSelector, createErrorMessageSelector, FETCH_DRIVER } from 'reducers';
 import { Form } from 'components';
 import { driverForm } from 'forms';
@@ -36,8 +36,10 @@ const DriverDetails = ({
         fields={driverForm.fields}
         submitLabel="zapisz"
         resetLabel="anuluj"
-        onSubmit={console.log}
+        onSubmit={values => dispatch(updateDriver(id, values.toJS()))}
         form="DriverDetails"
+        enableReinitialize
+        initialValues={driver}
       />
     </div>
   );

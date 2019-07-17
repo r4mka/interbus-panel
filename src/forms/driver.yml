@@ -8,3 +8,16 @@ fields:
     name: lastname
     type: text
     placeholder: Nazwisko
+  -
+    name: primaryPhonePL
+    type: text
+    placeholder: Telefon
+  -
+    name: car
+    type: text
+    placeholder: Samochód
+  -
+    name: status
+    type: text
+    placeholder: Status
+

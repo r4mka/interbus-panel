@@ -1,4 +1,4 @@
-import { FETCH_DRIVERS, FETCH_DRIVER } from 'reducers';
+import { FETCH_DRIVERS, FETCH_DRIVER, UPDATE_DRIVER } from 'reducers';
 import { apiClient } from 'store';
 import { schema } from 'normalizr';
 
@@ -17,5 +17,11 @@ const driverSchema = new schema.Entity('drivers', { car }, { idAttribute: 'pk' }
 export const fetchDriver = (id, options) => ({
   type: FETCH_DRIVER,
   payload: apiClient.get(`/drivers/${id}`, options),
+  meta: { schema: driverSchema },
+});
+
+export const updateDriver = (id, payload, options) => ({
+  type: UPDATE_DRIVER,
+  payload: apiClient.post(`/drivers/${id}`, { payload, ...options }),
   meta: { schema: driverSchema },
 });

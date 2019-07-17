@@ -13,3 +13,8 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root'),
 );
+
+// todo: reduce actions boilerplate with useApi hook
+// todo: install styled-components, facepaint, rebass-grid, ant-design
+// todo: simplify api Client
+// todo: add global error handling (snackbar?) - check React Error Boundaries
