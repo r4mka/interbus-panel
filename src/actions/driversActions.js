@@ -1,4 +1,4 @@
-import { FETCH_DRIVERS, FETCH_DRIVER, UPDATE_DRIVER } from 'reducers';
+import { FETCH_DRIVERS, FETCH_DRIVER, UPDATE_DRIVER, DELETE_DRIVER } from 'reducers';
 import { apiClient } from 'store';
 import { schema } from 'normalizr';
 
@@ -24,4 +24,10 @@ export const updateDriver = (id, payload, options) => ({
   type: UPDATE_DRIVER,
   payload: apiClient.post(`/drivers/${id}`, { payload, ...options }),
   meta: { schema: driverSchema },
+});
+
+export const deleteDriver = (id, options) => ({
+  type: DELETE_DRIVER,
+  payload: apiClient.delete(`/drivers/${id}`, options).then(() => ({ id })),
+  meta: { entity: 'drivers' },
 });

@@ -5,9 +5,14 @@ const initialState = fromJS({
   drivers: {},
 });
 
-export default (state = initialState, action) => {
-  if (action.payload && action.payload.entities) {
-    return state.mergeDeep(fromJS(action.payload.entities));
+export default (state = initialState, { type, payload, meta }) => {
+  if (payload && payload.entities) {
+    return state.mergeDeep(fromJS(payload.entities));
+  }
+
+  const deleted = /DELETE_.*_FULFILLED/.exec(type);
+  if (deleted && meta) {
+    return state.deleteIn([meta.entity, payload.id]);
   }
 
   return state;
