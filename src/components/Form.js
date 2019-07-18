@@ -4,6 +4,7 @@ import { map, upperFirst } from 'lodash';
 import { PropTypes } from 'utils';
 import * as FormFields from 'components/FormFields';
 import * as validators from 'redux-form-validators';
+import { Button } from 'antd';
 
 const FormField = ({ meta: { touched, error }, type, ...props }) => {
   const Component = FormFields[upperFirst(type)];
@@ -31,13 +32,13 @@ const Form = ({ fields, handleSubmit, pristine, reset, resetLabel, submitting, s
     ))}
     <div style={{ margin: 8, textAlign: 'right' }}>
       {resetLabel && (
-        <button type="button" onClick={reset} disabled={pristine} style={{ marginRight: 8 }}>
+        <Button htmlType="button" onClick={reset} disabled={pristine} style={{ marginRight: 8 }}>
           {resetLabel}
-        </button>
+        </Button>
       )}
-      <button type="submit" disabled={submitting || pristine}>
+      <Button htmlType="submit" type="primary" disabled={submitting || pristine}>
         {submitLabel}
-      </button>
+      </Button>
     </div>
   </form>
 );
