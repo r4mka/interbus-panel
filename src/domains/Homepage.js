@@ -1,17 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { MenuItem } from 'components';
+import { Row, Col } from 'antd';
 
 const Homepage = () => (
-  <nav>
-    <ul>
-      <li>
-        <Link to="/cars">Samochody</Link>
-      </li>
-      <li>
-        <Link to="/drivers/">Kierowcy</Link>
-      </li>
-    </ul>
-  </nav>
+  <Row type="flex">
+    <Col xs={12}>
+      <MenuItem icon="car" name="Samochody" url="/cars" />
+    </Col>
+    <Col xs={12}>
+      <MenuItem icon="user" name="Kierowcy" url="/drivers" />
+    </Col>
+  </Row>
 );
 
 export default Homepage;
