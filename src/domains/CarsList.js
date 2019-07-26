@@ -15,27 +15,16 @@ const CarsList = () => {
     }
   }, []);
 
-  return (
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Back</Link>
-          </li>
-        </ul>
-      </nav>
-      {isLoading ? (
-        <div>loading...</div>
-      ) : (
-        <ul>
-          {cars.map(car => (
-            <li key={car}>
-              <Link to={`/cars/${car}`}>{car}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+  return isLoading ? (
+    <div>loading...</div>
+  ) : (
+    <ul>
+      {cars.map(car => (
+        <li key={car}>
+          <Link to={`/cars/${car}`}>{car}</Link>
+        </li>
+      ))}
+    </ul>
   );
 };
 

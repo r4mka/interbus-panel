@@ -6,6 +6,7 @@ import { fetchDriver, updateDriver, deleteDriver } from 'actions';
 import { createLoadingSelector, createErrorMessageSelector, FETCH_DRIVER } from 'reducers';
 import { Form } from 'components';
 import { driverForm } from 'forms';
+import { PageHeader } from 'antd';
 
 const DriverDetails = ({
   history,
@@ -31,25 +32,28 @@ const DriverDetails = ({
   }
 
   return (
-    <div>
-      <h2>{`${driver.get('firstname')} ${driver.get('lastname')}`}</h2>
-      <Form
-        fields={driverForm.fields}
-        submitLabel="zapisz"
-        resetLabel="anuluj"
-        onSubmit={values => dispatch(updateDriver(id, values.toJS()))}
-        form="DriverDetails"
-        enableReinitialize
-        initialValues={driver}
-      />
-      <button
-        type="button"
-        onClick={() => dispatch(deleteDriver(id)).then(() => history.push('/drivers'))}
-        style={{ marginRight: 8 }}
-      >
-        usuń
-      </button>
-    </div>
+    <PageHeader title={`${driver.get('firstname')} ${driver.get('lastname')}`}>
+      <div className="wrap">
+        <div className="content">
+          <Form
+            fields={driverForm.fields}
+            submitLabel="zapisz"
+            resetLabel="anuluj"
+            onSubmit={values => dispatch(updateDriver(id, values.toJS()))}
+            form="DriverDetails"
+            enableReinitialize
+            initialValues={driver}
+          />
+          <button
+            type="button"
+            onClick={() => dispatch(deleteDriver(id)).then(() => history.push('/drivers'))}
+            style={{ marginRight: 8 }}
+          >
+            usuń
+          </button>
+        </div>
+      </div>
+    </PageHeader>
   );
 };
 
