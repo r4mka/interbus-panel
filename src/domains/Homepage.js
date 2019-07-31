@@ -7,11 +7,11 @@ const Homepage = () => {
   const { t } = useTranslation();
 
   return (
-    <Row type="flex">
-      <Col xs={12}>
+    <Row>
+      <Col xs={24} sm={12} md={7}>
         <MenuItem icon="car" name={t('cars.cars')} url="/cars" />
       </Col>
-      <Col xs={12}>
+      <Col xs={24} sm={12} md={7}>
         <MenuItem icon="user" name={t('drivers.drivers')} url="/drivers" />
       </Col>
     </Row>

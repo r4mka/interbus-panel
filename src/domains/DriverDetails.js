@@ -7,7 +7,7 @@ import { fetchDriver, updateDriver, deleteDriver } from 'actions';
 import { createLoadingSelector, createErrorMessageSelector, FETCH_DRIVER } from 'reducers';
 import { Form } from 'components';
 import { driverForm } from 'forms';
-import { PageHeader } from 'antd';
+import { Col, PageHeader, Row, Button } from 'antd';
 
 const DriverDetails = ({
   history,
@@ -35,8 +35,8 @@ const DriverDetails = ({
 
   return (
     <PageHeader title={`${driver.get('firstname')} ${driver.get('lastname')}`}>
-      <div className="wrap">
-        <div className="content">
+      <Row type="flex" gutter={8}>
+        <Col xs={24} sm={12}>
           <Form
             fields={driverForm.fields}
             onSubmit={values => dispatch(updateDriver(id, values.toJS()))}
@@ -44,15 +44,16 @@ const DriverDetails = ({
             enableReinitialize
             initialValues={driver}
           />
-          <button
-            type="button"
+        </Col>
+        <Col xs={24} sm={12}>
+          <Button
+            type="danger"
             onClick={() => dispatch(deleteDriver(id)).then(() => history.push('/drivers'))}
-            style={{ marginRight: 8 }}
           >
             {t('button.delete')}
-          </button>
-        </div>
-      </div>
+          </Button>
+        </Col>
+      </Row>
     </PageHeader>
   );
 };

@@ -5,8 +5,8 @@ import { Icon } from 'antd';
 import styled from 'styled-components';
 
 const StyledLink = styled(Link)`
-  margin: 1rem;
-  padding: 1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
   background-color: #f0f2f5;
   display: flex;
   flex-direction: column;

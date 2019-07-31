@@ -4,7 +4,7 @@ import { map, upperFirst } from 'lodash';
 import { PropTypes } from 'utils';
 import * as FormFields from 'components/FormFields';
 import * as validators from 'redux-form-validators';
-import { Button, Form as AntdForm, Row, Col } from 'antd';
+import { Button, Form as AntdForm } from 'antd';
 import i18n from 'i18n';
 
 const FormField = ({ type, ...props }) => {
@@ -19,7 +19,7 @@ FormField.propTypes = {
 };
 
 const Form = ({ fields, handleSubmit, pristine, reset, cancelLabel, submitting, submitLabel }) => (
-  <AntdForm layout="horizontal" onSubmit={handleSubmit} style={{ display: 'inline-block' }}>
+  <AntdForm layout="horizontal" onSubmit={handleSubmit}>
     {map(fields, ({ type, name, validate = [], ...props }) => (
       <Field
         name={name}
@@ -29,7 +29,7 @@ const Form = ({ fields, handleSubmit, pristine, reset, cancelLabel, submitting, 
         {...props}
       />
     ))}
-    <div style={{ margin: 8, textAlign: 'right' }}>
+    <div style={{ textAlign: 'right' }}>
       {cancelLabel && (
         <Button htmlType="button" onClick={reset} disabled={pristine} style={{ marginRight: 8 }}>
           {cancelLabel}
