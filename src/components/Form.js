@@ -4,13 +4,13 @@ import { map, upperFirst } from 'lodash';
 import { PropTypes } from 'utils';
 import * as FormFields from 'components/FormFields';
 import * as validators from 'redux-form-validators';
-import { Button } from 'antd';
+import { Button, Form as AntdForm, Row, Col } from 'antd';
 import i18n from 'i18n';
 
-const FormField = ({ meta: { touched, error }, type, ...props }) => {
+const FormField = ({ type, ...props }) => {
   const Component = FormFields[upperFirst(type)];
 
-  return <Component {...props} error={touched && error} />;
+  return <Component {...props} />;
 };
 
 FormField.propTypes = {
@@ -19,17 +19,15 @@ FormField.propTypes = {
 };
 
 const Form = ({ fields, handleSubmit, pristine, reset, cancelLabel, submitting, submitLabel }) => (
-  <form onSubmit={handleSubmit} style={{ display: 'inline-block' }}>
+  <AntdForm layout="horizontal" onSubmit={handleSubmit} style={{ display: 'inline-block' }}>
     {map(fields, ({ type, name, validate = [], ...props }) => (
-      <div key={name} style={{ margin: 8 }}>
-        <Field
-          name={name}
-          type={type}
-          validate={validate.map(v => validators[v]())}
-          component={FormField}
-          {...props}
-        />
-      </div>
+      <Field
+        name={name}
+        type={type}
+        validate={validate.map(v => validators[v]())}
+        component={FormField}
+        {...props}
+      />
     ))}
     <div style={{ margin: 8, textAlign: 'right' }}>
       {cancelLabel && (
@@ -41,7 +39,7 @@ const Form = ({ fields, handleSubmit, pristine, reset, cancelLabel, submitting, 
         {submitLabel}
       </Button>
     </div>
-  </form>
+  </AntdForm>
 );
 
 Form.propTypes = {

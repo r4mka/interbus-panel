@@ -1,23 +1,23 @@
 fields:
   -
     name: firstname
-    type: text
+    type: TextField
     placeholder: Imie
     validate: [required]
   -
     name: lastname
-    type: text
+    type: TextField
     placeholder: Nazwisko
   -
     name: primaryPhonePL
-    type: text
+    type: TextField
     placeholder: Telefon
   -
     name: car
-    type: text
+    type: TextField
     placeholder: Samochód
   -
     name: status
-    type: text
+    type: TextField
     placeholder: Status
 
