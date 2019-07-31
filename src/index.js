@@ -12,6 +12,7 @@ import {
   DriverDetails,
   DriverCreate,
 } from 'domains';
+import 'i18n';
 
 ReactDOM.render(
   <Provider store={store}>

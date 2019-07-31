@@ -5,6 +5,7 @@ import { PropTypes } from 'utils';
 import * as FormFields from 'components/FormFields';
 import * as validators from 'redux-form-validators';
 import { Button } from 'antd';
+import i18n from 'i18n';
 
 const FormField = ({ meta: { touched, error }, type, ...props }) => {
   const Component = FormFields[upperFirst(type)];
@@ -17,7 +18,7 @@ FormField.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
-const Form = ({ fields, handleSubmit, pristine, reset, resetLabel, submitting, submitLabel }) => (
+const Form = ({ fields, handleSubmit, pristine, reset, cancelLabel, submitting, submitLabel }) => (
   <form onSubmit={handleSubmit} style={{ display: 'inline-block' }}>
     {map(fields, ({ type, name, validate = [], ...props }) => (
       <div key={name} style={{ margin: 8 }}>
@@ -31,9 +32,9 @@ const Form = ({ fields, handleSubmit, pristine, reset, resetLabel, submitting, s
       </div>
     ))}
     <div style={{ margin: 8, textAlign: 'right' }}>
-      {resetLabel && (
+      {cancelLabel && (
         <Button htmlType="button" onClick={reset} disabled={pristine} style={{ marginRight: 8 }}>
-          {resetLabel}
+          {cancelLabel}
         </Button>
       )}
       <Button htmlType="submit" type="primary" disabled={submitting || pristine}>
@@ -49,12 +50,13 @@ Form.propTypes = {
   pristine: PropTypes.bool.isRequired,
   reset: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
-  submitLabel: PropTypes.string.isRequired,
-  resetLabel: PropTypes.string,
+  cancelLabel: PropTypes.string,
+  submitLabel: PropTypes.string,
 };
 
 Form.defaultProps = {
-  resetLabel: '',
+  cancelLabel: i18n.t('button.cancel'),
+  submitLabel: i18n.t('button.submit'),
 };
 
 export default reduxForm({})(Form);

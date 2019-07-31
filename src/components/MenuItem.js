@@ -13,6 +13,10 @@ const StyledLink = styled(Link)`
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
+
+  :hover {
+    background-color: #d2d8e1;
+  }
 `;
 
 const MenuItem = ({ icon, name, url }) => (

@@ -2,13 +2,14 @@ import React from 'react';
 import { PropTypes } from 'utils';
 import { connect } from 'react-redux';
 import { Route, Switch, Link } from 'react-router-dom';
-import { Breadcrumb } from 'antd';
+import { Breadcrumb as AntdBreadcrumb } from 'antd';
 import { Map } from 'immutable';
+import { useTranslation } from 'react-i18next';
 
 const BreadcrumbItem = ({ match: { url }, name }) => (
-  <Breadcrumb.Item>
+  <AntdBreadcrumb.Item>
     <Link to={url}>{name}</Link>
-  </Breadcrumb.Item>
+  </AntdBreadcrumb.Item>
 );
 
 BreadcrumbItem.propTypes = {
@@ -26,24 +27,33 @@ const DriverBreadcrumbItem = connect((state, { match: { params: { id } } }) => (
   name: getDriverName(state.getIn(['entities', 'drivers', id])),
 }))(BreadcrumbItem);
 
-export default props => (
-  <Breadcrumb {...props}>
-    <Route path="/" component={p => <BreadcrumbItem {...p} name="Strona Główna" />} />
-    <Route path="/cars" component={p => <BreadcrumbItem {...p} name="Auta" />} />
-    <Switch>
+const Breadcrumb = props => {
+  const { t } = useTranslation();
+
+  return (
+    <AntdBreadcrumb {...props}>
+      <Route path="/" component={p => <BreadcrumbItem {...p} name={t('common.homepage')} />} />
+      <Route path="/cars" component={p => <BreadcrumbItem {...p} name={t('cars.cars')} />} />
+      <Switch>
+        <Route
+          path="/cars/create"
+          component={p => <BreadcrumbItem {...p} name={t('cars.create')} />}
+        />
+        <Route path="/cars/:id" component={CarBreadcrumbItem} />
+      </Switch>
       <Route
-        path="/cars/create"
-        component={p => <BreadcrumbItem {...p} name="Stwórz samochód" />}
+        path="/drivers"
+        component={p => <BreadcrumbItem {...p} name={t('drivers.drivers')} />}
       />
-      <Route path="/cars/:id" component={CarBreadcrumbItem} />
-    </Switch>
-    <Route path="/drivers" component={p => <BreadcrumbItem {...p} name="Kierowcy" />} />
-    <Switch>
-      <Route
-        path="/drivers/create"
-        component={p => <BreadcrumbItem {...p} name="Stwórz kierowcę" />}
-      />
-      <Route path="/drivers/:id" component={DriverBreadcrumbItem} />
-    </Switch>
-  </Breadcrumb>
-);
+      <Switch>
+        <Route
+          path="/drivers/create"
+          component={p => <BreadcrumbItem {...p} name={t('drivers.create')} />}
+        />
+        <Route path="/drivers/:id" component={DriverBreadcrumbItem} />
+      </Switch>
+    </AntdBreadcrumb>
+  );
+};
+
+export default Breadcrumb;
