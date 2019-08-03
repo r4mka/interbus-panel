@@ -32,5 +32,7 @@ ReactDOM.render(
   document.getElementById('root'),
 );
 
+document.getElementById('root').style.height = '100%';
+
 // todo: simplify api Client
 // todo: add global error handling (snackbar?) - check React Error Boundaries

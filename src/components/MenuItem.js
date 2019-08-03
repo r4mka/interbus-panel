@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'utils';
 import { Link } from 'react-router-dom';
 import { Icon } from 'antd';
-import styled from 'styled-components';
+import { styled } from 'ui';
 
 const StyledLink = styled(Link)`
   margin: 0.5rem;

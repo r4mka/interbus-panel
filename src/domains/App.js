@@ -1,35 +1,21 @@
 import React from 'react';
 import { PropTypes } from 'utils';
-import { Layout, Menu } from 'antd';
-import { Breadcrumb } from 'components';
-import { useTranslation } from 'react-i18next';
+import { Header, Breadcrumb } from 'components';
+import { Layout, OverflowWrapper, Content, Page } from 'ui';
 
-const { Header, Content, Footer } = Layout;
-
-const App = ({ children }) => {
-  const { t } = useTranslation();
-
-  return (
-    <Layout className="layout">
-      <Header>
-        <div className="logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['2']}
-          style={{ lineHeight: '64px' }}
-        >
-          {/* <Menu.Item key="1">nav 1</Menu.Item> */}
-        </Menu>
-      </Header>
-      <Content style={{ padding: '0 50px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }} />
-        <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>{children}</div>
+const App = ({ children }) => (
+  <Layout>
+    <Header />
+    <OverflowWrapper>
+      <Content>
+        <Page>
+          <Breadcrumb />
+          {children}
+        </Page>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>{t('common.footer')}</Footer>
-    </Layout>
-  );
-};
+    </OverflowWrapper>
+  </Layout>
+);
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
