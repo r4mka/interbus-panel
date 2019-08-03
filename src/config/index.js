@@ -4,4 +4,7 @@ export default {
   host: HOST || 'localhost',
   port: PORT,
   apiHost: REACT_APP_API_HOST,
+  app: {
+    status: ['active', 'inactive', 'vacation', 'service', 'blocked'],
+  },
 };

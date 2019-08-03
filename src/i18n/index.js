@@ -24,6 +24,13 @@ const resources = {
         create: 'Dodaj samochód',
         delete: 'Usuń samochód',
       },
+      status: {
+        active: 'aktywny',
+        inactive: 'nieaktywny',
+        vacation: 'urlop',
+        service: 'serwis',
+        blocked: 'zablokowany',
+      },
     },
   },
 };
