@@ -3,19 +3,21 @@ import { PropTypes } from 'utils';
 import { Link } from 'react-router-dom';
 import { Icon } from 'antd';
 import { styled } from 'ui';
+import { darken } from 'polished';
 
 const StyledLink = styled(Link)`
-  margin: 0.5rem;
-  padding: 0.5rem;
-  background-color: #f0f2f5;
+  margin: 8px 0;
+  padding: 2rem 0.5rem;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
 
   :hover {
-    background-color: #d2d8e1;
+    background-color: ${darken(0.1, '#fff')};
   }
 `;
 

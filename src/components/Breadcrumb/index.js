@@ -8,7 +8,7 @@ import BreadcrumbItemCar from './BreadcrumbItemCar';
 import BreadcrumbItemDriver from './BreadcrumbItemDriver';
 
 const StyledBreadcrumb = styled(AntdBreadcrumb)`
-  margin: 8px 0;
+  margin: 24px 0;
   padding-bottom: 8px;
   border-bottom: 2px solid lightgray;
 `;
