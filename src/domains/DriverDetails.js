@@ -7,7 +7,12 @@ import { fetchDriver, updateDriver, deleteDriver } from 'actions';
 import { createLoadingSelector, createErrorMessageSelector, FETCH_DRIVER } from 'reducers';
 import { Form } from 'components';
 import { driverForm } from 'forms';
-import { Col, PageHeader, Row, Button } from 'antd';
+import { styled } from 'ui';
+import { Col, PageHeader, Row, Button, Empty } from 'antd';
+
+const StyledPageHeader = styled(PageHeader)`
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
+`;
 
 const DriverDetails = ({
   history,
@@ -34,9 +39,20 @@ const DriverDetails = ({
   }
 
   return (
-    <PageHeader title={`${driver.get('firstname')} ${driver.get('lastname')}`}>
-      <Row type="flex" gutter={8}>
-        <Col xs={24} sm={12}>
+    <Row type="flex" gutter={16}>
+      <Col xs={24} md={12}>
+        <StyledPageHeader
+          title={`${driver.get('firstname')} ${driver.get('lastname')}`}
+          onBack={() => history.goBack()}
+          extra={
+            <Button
+              type="danger"
+              onClick={() => dispatch(deleteDriver(id)).then(() => history.push('/drivers'))}
+            >
+              {t('button.delete')}
+            </Button>
+          }
+        >
           <Form
             fields={driverForm.fields}
             onSubmit={values => dispatch(updateDriver(id, values.toJS()))}
@@ -44,17 +60,17 @@ const DriverDetails = ({
             enableReinitialize
             initialValues={driver}
           />
-        </Col>
-        <Col xs={24} sm={12}>
-          <Button
-            type="danger"
-            onClick={() => dispatch(deleteDriver(id)).then(() => history.push('/drivers'))}
-          >
-            {t('button.delete')}
-          </Button>
-        </Col>
-      </Row>
-    </PageHeader>
+        </StyledPageHeader>
+      </Col>
+      <Col xs={24} md={12}>
+        <StyledPageHeader title="Ostatnie wyjazdy">
+          <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+        </StyledPageHeader>
+        <StyledPageHeader title="Statystyki">
+          <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+        </StyledPageHeader>
+      </Col>
+    </Row>
   );
 };
 
