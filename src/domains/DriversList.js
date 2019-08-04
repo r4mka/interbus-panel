@@ -14,9 +14,7 @@ const DriversList = ({ history }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    if (drivers.isEmpty()) {
-      dispatch(fetchDrivers());
-    }
+    dispatch(fetchDrivers());
   }, []);
 
   return (

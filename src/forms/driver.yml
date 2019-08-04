@@ -8,10 +8,12 @@ fields:
     name: lastname
     type: TextField
     placeholder: Nazwisko
+    validate: [required]
   -
     name: primaryPhonePL
     type: TextField
     placeholder: Telefon
+    validate: [required]
   -
     name: car
     type: TextField
