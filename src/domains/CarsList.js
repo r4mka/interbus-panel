@@ -1,36 +1,44 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { PropTypes } from 'utils';
 import { fetchCars } from 'actions';
 import { createLoadingSelector, FETCH_CARS } from 'reducers';
+import { Button, List } from 'antd';
+import { Card, ListItemCar } from 'components';
 
-const CarsList = () => {
+const CarsList = ({ history }) => {
   const cars = useSelector(state => state.get('cars'));
   const isLoading = useSelector(createLoadingSelector(FETCH_CARS));
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
   useEffect(() => {
-    if (cars.isEmpty()) {
-      dispatch(fetchCars());
-    }
+    dispatch(fetchCars());
   }, []);
 
-  return isLoading ? (
-    <div>loading...</div>
-  ) : (
-    <ul>
-      <li>
-        <Link to="/cars/create">{t('cars.create')}</Link>
-      </li>
-      {cars.map(car => (
-        <li key={car}>
-          <Link to={`/cars/${car}`}>{car}</Link>
-        </li>
-      ))}
-    </ul>
+  return (
+    <Card
+      title={t('cars.cars')}
+      onBack={() => history.push('/')}
+      extra={
+        <Button type="primary" onClick={() => history.push('/cars/create')}>
+          {t('cars.create')}
+        </Button>
+      }
+    >
+      <List
+        loading={isLoading}
+        itemLayout="vertical"
+        dataSource={cars}
+        renderItem={carId => <ListItemCar id={carId} />}
+      />
+    </Card>
   );
+};
+
+CarsList.propTypes = {
+  history: PropTypes.history.isRequired,
 };
 
 export default CarsList;

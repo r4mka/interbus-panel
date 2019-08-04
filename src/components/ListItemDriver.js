@@ -11,7 +11,6 @@ const ListItemDriver = ({ id }) => {
 
   return (
     <List.Item key={id} extra={<Status status={driver.get('status')} />}>
-      {/* <List.Item.Meta title={<a href={item.href}>{item.title}</a>} description={item.description} /> */}
       <Link to={`/drivers/${id}`}>{`${driver.get('firstname')} ${driver.get('lastname')}`}</Link>
     </List.Item>
   );

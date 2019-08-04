@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { PropTypes } from 'utils';
 import { fetchDrivers } from 'actions';
 import { createLoadingSelector, FETCH_DRIVERS } from 'reducers';
-import { PropTypes } from 'utils';
 import { Button, List } from 'antd';
 import { Card, ListItemDriver } from 'components';
 
@@ -19,7 +19,7 @@ const DriversList = ({ history }) => {
 
   return (
     <Card
-      title="Kierowcy"
+      title={t('drivers.drivers')}
       onBack={() => history.push('/')}
       extra={
         <Button type="primary" onClick={() => history.push('/drivers/create')}>
