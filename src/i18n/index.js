@@ -31,6 +31,10 @@ const resources = {
         service: 'serwis',
         blocked: 'zablokowany',
       },
+      validators: {
+        required: 'To pole jest wymagane',
+        default: 'Nieprawidłowa wartość',
+      },
     },
   },
 };

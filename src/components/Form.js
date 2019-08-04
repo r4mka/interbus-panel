@@ -6,6 +6,7 @@ import * as FormFields from 'components/FormFields';
 import * as validators from 'redux-form-validators';
 import { Button, Form as AntdForm } from 'antd';
 import i18n from 'i18n';
+import { useTranslation } from 'react-i18next';
 
 const FormField = ({ type, ...props }) => {
   const Component = FormFields[upperFirst(type)];
@@ -18,29 +19,40 @@ FormField.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
-const Form = ({ fields, handleSubmit, pristine, reset, cancelLabel, submitting, submitLabel }) => (
-  <AntdForm layout="horizontal" onSubmit={handleSubmit}>
-    {map(fields, ({ type, name, validate = [], ...props }) => (
-      <Field
-        name={name}
-        type={type}
-        validate={validate.map(v => validators[v]())}
-        component={FormField}
-        {...props}
-      />
-    ))}
-    <div style={{ textAlign: 'right' }}>
-      {cancelLabel && (
-        <Button htmlType="button" onClick={reset} disabled={pristine} style={{ marginRight: 8 }}>
-          {cancelLabel}
+const Form = ({ fields, handleSubmit, pristine, reset, cancelLabel, submitting, submitLabel }) => {
+  const { t } = useTranslation();
+
+  return (
+    <AntdForm layout="horizontal" onSubmit={handleSubmit}>
+      {map(fields, ({ type, name, validate = [], ...props }) => (
+        <Field
+          name={name}
+          type={type}
+          validate={validate.map(v =>
+            typeof v === 'string'
+              ? validators[v]({ message: t(`validators.${v}`, 'validators.default') })
+              : validators[v.name]({
+                  message: t(`validators.${v.name}`, 'validators.default'),
+                  ...v.options,
+                }),
+          )}
+          component={FormField}
+          {...props}
+        />
+      ))}
+      <div style={{ textAlign: 'right' }}>
+        {cancelLabel && (
+          <Button htmlType="button" onClick={reset} disabled={pristine} style={{ marginRight: 8 }}>
+            {cancelLabel}
+          </Button>
+        )}
+        <Button htmlType="submit" type="primary" disabled={submitting || pristine}>
+          {submitLabel}
         </Button>
-      )}
-      <Button htmlType="submit" type="primary" disabled={submitting || pristine}>
-        {submitLabel}
-      </Button>
-    </div>
-  </AntdForm>
-);
+      </div>
+    </AntdForm>
+  );
+};
 
 Form.propTypes = {
   fields: PropTypes.arrayOf(PropTypes.object).isRequired,
