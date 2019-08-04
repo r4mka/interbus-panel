@@ -5,14 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { fetchDriver, updateDriver, deleteDriver } from 'actions';
 import { createLoadingSelector, createErrorMessageSelector, FETCH_DRIVER } from 'reducers';
-import { Form } from 'components';
 import { driverForm } from 'forms';
-import { styled } from 'ui';
-import { Col, PageHeader, Row, Button, Empty } from 'antd';
-
-const StyledPageHeader = styled(PageHeader)`
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22);
-`;
+import { Col, Row, Button, Empty } from 'antd';
+import { Card, Form } from 'components';
 
 const DriverDetails = ({
   history,
@@ -30,10 +25,6 @@ const DriverDetails = ({
     dispatch(fetchDriver(id));
   }, [id]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   if (error) {
     return <div>{error}</div>;
   }
@@ -41,7 +32,8 @@ const DriverDetails = ({
   return (
     <Row type="flex" gutter={16}>
       <Col xs={24} md={12}>
-        <StyledPageHeader
+        <Card
+          loading={isLoading}
           title={`${driver.get('firstname')} ${driver.get('lastname')}`}
           onBack={() => history.goBack()}
           extra={
@@ -60,15 +52,15 @@ const DriverDetails = ({
             enableReinitialize
             initialValues={driver}
           />
-        </StyledPageHeader>
+        </Card>
       </Col>
       <Col xs={24} md={12}>
-        <StyledPageHeader title="Ostatnie wyjazdy">
+        <Card title="Ostatnie wyjazdy" loading={isLoading}>
           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-        </StyledPageHeader>
-        <StyledPageHeader title="Statystyki">
+        </Card>
+        <Card title="Statystyki" loading={isLoading}>
           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
-        </StyledPageHeader>
+        </Card>
       </Col>
     </Row>
   );

@@ -31,6 +31,6 @@ export const Page = styled.div`
   ${mq({
     margin: ['1rem', '2rem'],
   })};
-  max-width: 1200px;
+  max-width: 1000px;
   flex: 1;
 `;
