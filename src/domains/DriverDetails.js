@@ -55,10 +55,10 @@ const DriverDetails = ({
         </Card>
       </Col>
       <Col xs={24} md={12}>
-        <Card title="Ostatnie wyjazdy" loading={isLoading}>
+        <Card title={t('common.lastDepartures')} loading={isLoading}>
           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
         </Card>
-        <Card title="Statystyki" loading={isLoading}>
+        <Card title={t('common.stats')} loading={isLoading}>
           <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
         </Card>
       </Col>

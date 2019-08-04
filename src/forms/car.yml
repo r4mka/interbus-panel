@@ -1,22 +1,21 @@
 fields:
-  - name: firstname
+  - name: plate
     type: TextField
-    label: Imie
+    label: Nr rejestracyjny
     validate: [required]
 
-  - name: lastname
+  - name: carModel
     type: TextField
-    label: Nazwisko
+    label: Model
     validate: [required]
 
-  - name: primaryPhonePL
-    type: TextField
-    label: Telefon
-    validate: [required]
+  - name: milage
+    type: NumberField
+    label: Przebieg
 
-  - name: car
-    type: TextField
-    label: Samochód
+  - name: year
+    type: NumberField
+    label: Rok produkcji
 
   - name: status
     type: SelectField
@@ -27,5 +26,5 @@ fields:
         value: active
       - label: Nieaktywny
         value: inactive
-      - label: Urlop
-        value: vacation
+      - label: Serwis
+        value: service

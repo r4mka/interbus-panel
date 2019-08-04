@@ -19,11 +19,26 @@ FormField.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
-const Form = ({ fields, handleSubmit, pristine, reset, cancelLabel, submitting, submitLabel }) => {
+const Form = ({
+  fields,
+  handleSubmit,
+  pristine,
+  reset,
+  submitting,
+  cancelLabel,
+  labelCol,
+  submitLabel,
+  wrapperCol,
+}) => {
   const { t } = useTranslation();
 
   return (
-    <AntdForm layout="horizontal" onSubmit={handleSubmit}>
+    <AntdForm
+      layout="horizontal"
+      onSubmit={handleSubmit}
+      labelCol={labelCol}
+      wrapperCol={wrapperCol}
+    >
       {map(fields, ({ type, name, validate = [], ...props }) => (
         <Field
           name={name}
@@ -61,12 +76,16 @@ Form.propTypes = {
   reset: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
   cancelLabel: PropTypes.string,
+  labelCol: PropTypes.object,
   submitLabel: PropTypes.string,
+  wrapperCol: PropTypes.object,
 };
 
 Form.defaultProps = {
   cancelLabel: i18n.t('button.cancel'),
+  labelCol: { span: 10 },
   submitLabel: i18n.t('button.submit'),
+  wrapperCol: { span: 14 },
 };
 
 export default reduxForm({})(Form);

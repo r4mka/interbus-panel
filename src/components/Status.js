@@ -33,7 +33,7 @@ const Status = ({ status }) => {
 };
 
 Status.propTypes = {
-  status: PropTypes.oneOf([statusList]),
+  status: PropTypes.oneOf(statusList),
 };
 
 Status.defaultProps = {

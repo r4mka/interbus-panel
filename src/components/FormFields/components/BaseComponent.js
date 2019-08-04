@@ -36,8 +36,8 @@ export default function createComponent(AntdComponent, mapProps) {
         <Form.Item
           label={label}
           ref={this.initComponentRef}
-          wrapperCol={wrapperCol}
-          labelCol={labelCol}
+          // wrapperCol={wrapperCol}
+          // labelCol={labelCol}
           help={help}
           hasFeedback
           extra={extra}

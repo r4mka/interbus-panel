@@ -7,6 +7,8 @@ const resources = {
       common: {
         footer: 'InterBus Panel ©2019',
         homepage: 'Strona Główna',
+        stats: 'Statystyki',
+        lastDepartures: 'Ostatnie wyjazdy',
       },
       button: {
         submit: 'Zapisz',
