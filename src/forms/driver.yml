@@ -1,25 +1,31 @@
 fields:
-  -
-    name: firstname
+  - name: firstname
     type: TextField
     placeholder: Imie
     validate: [required]
-  -
-    name: lastname
+
+  - name: lastname
     type: TextField
     placeholder: Nazwisko
     validate: [required]
-  -
-    name: primaryPhonePL
+
+  - name: primaryPhonePL
     type: TextField
     placeholder: Telefon
     validate: [required]
-  -
-    name: car
+
+  - name: car
     type: TextField
     placeholder: Samochód
-  -
-    name: status
-    type: TextField
-    placeholder: Status
 
+  - name: status
+    type: SelectField
+    placeholder: Status
+    validate: [required]
+    options:
+      - label: Aktywny
+        value: active
+      - label: Nieaktywny
+        value: inactive
+      - label: Urlop
+        value: vacation
