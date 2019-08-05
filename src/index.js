@@ -10,6 +10,7 @@ import {
   DriversList,
   CarDetails,
   DriverDetails,
+  CarCreate,
   DriverCreate,
 } from 'domains';
 import 'i18n';
@@ -19,6 +20,7 @@ ReactDOM.render(
     <Router>
       <App>
         <Switch>
+          <Route path="/cars/create" component={CarCreate} />
           <Route path="/cars/:id" component={CarDetails} />
           <Route path="/cars" component={CarsList} />
           <Route path="/drivers/create" component={DriverCreate} />

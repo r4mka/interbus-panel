@@ -20,6 +20,7 @@ fields:
   - name: status
     type: SelectField
     label: Status
+    placeholder: status
     validate: [required]
     options:
       - label: Aktywny
