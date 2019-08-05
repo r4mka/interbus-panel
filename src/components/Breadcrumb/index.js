@@ -38,6 +38,17 @@ const Breadcrumb = props => {
         />
         <Route path="/drivers/:id" component={BreadcrumbItemDriver} />
       </Switch>
+      <Route path="/orders" component={p => <BreadcrumbItem {...p} name={t('orders.orders')} />} />
+      <Switch>
+        <Route
+          path="/orders/create"
+          component={p => <BreadcrumbItem {...p} name={t('orders.create')} />}
+        />
+        <Route
+          path="/orders/:id"
+          component={p => <BreadcrumbItem {...p} name={t('common.details')} />}
+        />
+      </Switch>
     </StyledBreadcrumb>
   );
 };

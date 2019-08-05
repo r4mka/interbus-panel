@@ -6,12 +6,15 @@ import store from 'store';
 import {
   App,
   Homepage,
-  CarsList,
-  DriversList,
-  CarDetails,
-  DriverDetails,
   CarCreate,
+  CarDetails,
+  CarsList,
   DriverCreate,
+  DriverDetails,
+  DriversList,
+  OrderCreate,
+  OrderDetails,
+  OrdersList,
 } from 'domains';
 import 'i18n';
 
@@ -26,6 +29,9 @@ ReactDOM.render(
           <Route path="/drivers/create" component={DriverCreate} />
           <Route path="/drivers/:id" component={DriverDetails} />
           <Route path="/drivers" component={DriversList} />
+          <Route path="/orders/create" component={OrderCreate} />
+          <Route path="/orders/:id" component={OrderDetails} />
+          <Route path="/orders" component={OrdersList} />
           <Route path="/" component={Homepage} />
         </Switch>
       </App>

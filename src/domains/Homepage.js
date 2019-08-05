@@ -14,6 +14,9 @@ const Homepage = () => {
       <Col xs={24} sm={12} md={6}>
         <MenuItem icon="user" name={t('drivers.drivers')} url="/drivers" />
       </Col>
+      <Col xs={24} sm={12} md={6}>
+        <MenuItem icon="solution" name={t('orders.orders')} url="/orders" />
+      </Col>
     </Row>
   );
 };

@@ -9,6 +9,7 @@ const resources = {
         homepage: 'Strona Główna',
         stats: 'Statystyki',
         lastDepartures: 'Ostatnie wyjazdy',
+        details: 'Szczegóły',
       },
       button: {
         submit: 'Zapisz',
@@ -16,15 +17,20 @@ const resources = {
         delete: 'Usuń',
         back: 'Cofnij',
       },
+      cars: {
+        cars: 'Samochody',
+        create: 'Dodaj samochód',
+        delete: 'Usuń samochód',
+      },
       drivers: {
         drivers: 'Kierowcy',
         create: 'Dodaj kierowcę',
         delete: 'Usuń kierowcę',
       },
-      cars: {
-        cars: 'Samochody',
-        create: 'Dodaj samochód',
-        delete: 'Usuń samochód',
+      orders: {
+        orders: 'Zamówienia',
+        create: 'Dodaj zamówienie',
+        delete: 'Usuń zamówienie',
       },
       status: {
         active: 'aktywny',

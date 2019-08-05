@@ -1,0 +1,34 @@
+fields:
+  - name: firstname
+    type: TextField
+    label: Imie
+    validate: [required]
+
+  - name: lastname
+    type: TextField
+    label: Nazwisko
+    validate: [required]
+
+  - name: primaryPhonePL
+    type: TextField
+    label: Telefon PL
+    validate: [required]
+
+  - name: primaryPhoneNL
+    type: TextField
+    label: Telefon NL
+
+  - name: date
+    type: DatePickerField
+    label: data wyjazdu
+    validate: [required]
+
+  - name: from
+    type: TextField
+    label: Skąd
+    validate: [required]
+
+  - name: to
+    type: TextField
+    label: Dokąd
+    validate: [required]
