@@ -8,7 +8,7 @@
     "facepaint": "^1.2.1",
     "i18next": "^17.0.7",
     "immutable": "^4.0.0-rc.12",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "normalizr": "^3.4.0",
     "polished": "^3.4.1",
